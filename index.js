@@ -44,8 +44,23 @@ function handleClick(e) {
     endGame(true);
   } else {
     swapTurns();
-    setBoardHoverClass();
+    setHoverClass();
   }
+}
+
+function endGame(draw) {
+  if (draw) {
+    winMsg.innerText = "Draw!";
+  } else {
+    winMsg.innerText = `${circleTurn ? "O's" : "X's"} Wins!`;
+  }
+  winningMessageElement.classList.add("show");
+}
+
+function isDraw() {
+  return [...cellElements].every((cell) => {
+    return cell.classList.contains(xClass) || cell.classList.contains(cClass);
+  });
 }
 
 function placeMark(cell, currentClass) {
