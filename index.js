@@ -52,9 +52,9 @@ function placeMark(cell, currentClass) {
   cell.classList.add(currentClass);
 }
 
-// function swapTurns() {
-//   circleTurn = !circleTurn;
-// }
+function swapTurns() {
+  circleTurn = !circleTurn;
+}
 
 function setHoverClass() {
   container.classList.remove(xClass);
@@ -66,8 +66,10 @@ function setHoverClass() {
   }
 }
 
-// function placeMark() {}
-// function swapTurns() {}
-// function isDraw() {}
-// function endGame() {}
-// function setHoverClass() {}
+function checkWin(currentClass) {
+  return WINNING_COMBINATIONS.some((combination) => {
+    return combination.every((index) => {
+      return cellElements[index].classList.contains(currentClass);
+    });
+  });
+}
