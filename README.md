@@ -8,11 +8,11 @@ A simple implementation of the classic Tic-Tac-Toe game using HTML, CSS, and Jav
 1. Clone the repository to your local machine using your preferred method:
 
 ```bash
-git clone https://github.com/your-username/tic-tac-toe.git
+git clone https://github.com/YashveerUIX/tic-tac-toe.git
 ```
 2.Navigate to the project folder:
 ```bash
-cd tic-tac-toe
+cd Tic-Tac-Toe
 
 ```
     
