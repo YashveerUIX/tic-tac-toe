@@ -4,6 +4,7 @@
 
 :root {
   --cell-size: 100px;
+  --marker: calc(var(--cell-size) * 0.8);
 }
 
 body {
@@ -25,6 +26,29 @@ body {
   width: var(--cell-size);
   height: var(--cell-size);
   border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
+}
+.cell.x::before,
+.cell.x::after,
+.cell.circle::before {
+  background-color: black;
+}
+
+.conatainer.x,
+.cell:not(.x):not(.circle):hover::before,
+.conatainer.x,
+.cell:not(.x):not(.circle):hover::after,
+.container.circle .cell:not(.x):not(.circle):hover::before {
+  background-color: lightgray;
 }
 
 .cell:first-child,
@@ -49,4 +73,85 @@ body {
 .cell:nth-child(7),
 .cell:nth-child(8) {
   border-bottom: none;
+}
+
+.cell.x::after,
+.cell.x::before,
+.conatainer.x,
+.cell:not(.x):not(.circle):hover::before,
+.conatainer.x,
+.cell:not(.x):not(.circle):hover::after {
+  content: "";
+  width: calc(var(--marker) * 0.2);
+  height: var(--marker);
+  position: absolute;
+}
+
+.cell.x::before,
+.conatainer.x,
+.cell:not(.x):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.x::after,
+.conatainer.x,
+.cell:not(.x):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after,
+.container.circle .cell:not(.x):not(.circle):hover::before,
+.container.circle .cell:not(.x):not(.circle):hover::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cell.circle::before,
+.container.circle .cell:not(.x):not(.circle):hover::before {
+  width: var(--marker);
+  height: var(--marker);
+}
+
+.cell.circle::after,
+.container.circle .cell:not(.x):not(.circle):hover::after {
+  width: calc(var(--marker) * 0.7);
+  height: calc(var(--marker) * 0.7);
+  background-color: white;
+}
+
+.msg {
+  display: none;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  bottom: 0;
+  color: white;
+  font-size: 5rem;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  flex-direction: column;
+}
+
+.msg.show {
+  display: flex;
+}
+
+.msg button {
+  width: 10rem;
+  height: 5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 3rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.msg button:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
 }
