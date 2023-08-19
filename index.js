@@ -48,6 +48,24 @@ function handleClick(e) {
   }
 }
 
+function placeMark(cell, currentClass) {
+  cell.classList.add(currentClass);
+}
+
+// function swapTurns() {
+//   circleTurn = !circleTurn;
+// }
+
+function setHoverClass() {
+  container.classList.remove(xClass);
+  container.classList.remove(cClass);
+  if (circleTurn) {
+    container.classList.add(cClass);
+  } else {
+    container.classList.add(xClass);
+  }
+}
+
 // function placeMark() {}
 // function swapTurns() {}
 // function isDraw() {}
